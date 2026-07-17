@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+.env
+.env.*
+!.env.example
+*.log
+*.sqlite
+*.sqlite-*
+data/
+profiles/
+coverage/
+*.tsbuildinfo
+.DS_Store
