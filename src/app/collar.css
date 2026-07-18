@@ -2434,36 +2434,84 @@ body:has(.collar-verdict-overlay) {
 
 .collar-connection-panel,
 .collar-field,
-.collar-field input {
+.collar-field input,
+.collar-field select,
+.collar-profile-preview {
+  width: 100%;
   min-width: 0;
   max-width: 100%;
+  box-sizing: border-box;
 }
 
 .collar-connection-panel {
   overflow: hidden;
 }
 
+.collar-connection-panel .collar-field input:not([type="checkbox"]),
+.collar-connection-panel .collar-field select {
+  min-height: 39px;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
 .collar-field input[type="time"] {
   display: block;
+  inline-size: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
   width: 100%;
   box-sizing: border-box;
 }
 
 .collar-timer-settings-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 112px;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
-  gap: 8px;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.collar-timer-field {
+  width: 100%;
+  margin-top: 0;
 }
 
 .collar-timer-settings-row .collar-toggle-row {
-  min-width: 0;
-  min-height: 62px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  border: 1px solid #2b2526;
-  border-radius: 5px;
-  background: #0b0a0a;
-  padding: 10px;
+  min-height: 39px;
+  border-bottom: none;
+  gap: 8px;
+}
+
+.collar-morning-time-field {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.collar-morning-time-field input,
+.collar-morning-time-field input::-webkit-date-and-time-value {
+  text-align: left;
+}
+
+/* iOS Safari renders input[type=time] as a native control that ignores the CSS
+   border and paints over the right edge, so the right vertical line disappears.
+   Strip the native appearance so it renders as a plain bordered box identical to
+   the Profile select, with the border visible on all four sides. */
+.collar-morning-time-field input[type="time"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: calc(100% - 4px);
+  max-width: calc(100% - 4px);
+  inline-size: calc(100% - 4px);
+  max-inline-size: calc(100% - 4px);
+}
+
+.collar-morning-time-field input[type="time"]::-webkit-calendar-picker-indicator {
+  margin-inline-start: 4px;
+}
+
+@media (max-width: 440px) {
+  .collar-timer-settings-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+  }
 }
