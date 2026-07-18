@@ -65,7 +65,7 @@ function chooseType(context: TaskGenerationContext): TaskType {
 
   if (context.selectedMode === "breakdown") {
     const embodiedAvailable = available.filter((type) => EMBODIED_TYPES.includes(type));
-    const weighted = [
+    const weighted = ([
       ...requestedTypes.filter((type) => EMBODIED_TYPES.includes(type)),
       ...preferredTypes.filter((type) => EMBODIED_TYPES.includes(type)),
       "mixed",
@@ -76,7 +76,7 @@ function chooseType(context: TaskGenerationContext): TaskType {
       ...(context.currentStats.resistance >= context.currentStats.obedience
         ? ["mixed", "posture", "repeat"] as TaskType[]
         : [])
-    ].filter((type) => available.includes(type) && !recentTypes.includes(type));
+    ] as TaskType[]).filter((type) => available.includes(type) && !recentTypes.includes(type));
     const pool = weighted.length
       ? weighted
       : embodiedAvailable.length
