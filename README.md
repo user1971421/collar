@@ -5,9 +5,6 @@
   A local-first ritual terminal for continuous, consensual AI-guided roleplay.
 </p>
 
-<p align="center">
-  <img src="./public/collar-hero.svg" width="300" alt="Collar 隐藏倒计时与放置任务执行界面" />
-</p>
 
 Collar 不是随机生成成人任务的卡片机。
 
